@@ -1,4 +1,5 @@
 ﻿using System;
+using App.Repositories.Interfaces;
 
 namespace App.Repositories
 {
