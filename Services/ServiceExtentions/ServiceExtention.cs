@@ -1,4 +1,6 @@
-﻿using App.Services.Services;
+﻿using App.Core.Configuration;
+using App.Core.Validators;
+using App.Services.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Interfaces;
@@ -14,7 +16,10 @@ namespace App.Services.ServiceExtentions
     {
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<WktValidationConfig>(options =>
+            configuration.GetSection("WktValidation").Bind(options));
 
+            services.AddScoped<GeometryValidator>();
             services.AddScoped<IGeometryService, GeometryService>();
             return services;
         }

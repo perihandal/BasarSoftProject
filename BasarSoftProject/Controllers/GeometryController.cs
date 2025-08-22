@@ -17,7 +17,6 @@ namespace App.API.Controllers
                 this.geometryService = geometryService;
             }
 
-            // GET api/geometry
             [HttpGet]
             public async Task<IActionResult> GetAll()
             {
@@ -28,7 +27,6 @@ namespace App.API.Controllers
                 return Ok(response);
             }
 
-            // GET api/geometry/5
             [HttpGet("{id}")]
             public async Task<IActionResult> GetById(int id)
             {
@@ -39,7 +37,6 @@ namespace App.API.Controllers
                 return Ok(response);
             }
 
-            // POST api/geometry
             [HttpPost]
             public async Task<IActionResult> Create([FromBody] GeometryDto dto)
             {
@@ -53,7 +50,6 @@ namespace App.API.Controllers
                 return Ok(response);
             }
 
-            // PUT api/geometry/5
             [HttpPut("{id}")]
             public async Task<IActionResult> Update(int id, [FromBody] GeometryDto dto)
             {
@@ -67,7 +63,6 @@ namespace App.API.Controllers
                 return Ok(response);
             }
 
-            // DELETE api/geometry/5
             [HttpDelete("{id}")]
             public async Task<IActionResult> Delete(int id)
             {

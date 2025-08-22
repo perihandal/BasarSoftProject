@@ -14,7 +14,6 @@ namespace App.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Assembly içindeki tüm IEntityTypeConfiguration implementasyonlarını uygula
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }

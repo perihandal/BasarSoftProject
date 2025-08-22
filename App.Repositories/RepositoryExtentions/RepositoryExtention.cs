@@ -28,7 +28,6 @@ namespace App.Repositories.RepositoryExtentions
                         npgsqlOptions.UseNetTopologySuite(); // PostGIS geometriler için
                 }));
 
-            // Repository ve UnitOfWork DI
             services.AddScoped<IGeometryRepository, GeometryRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

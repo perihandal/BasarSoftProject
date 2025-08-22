@@ -19,7 +19,6 @@ namespace App.Repositories.Repositories
                 .FirstOrDefaultAsync(g => g.Id == id);
         }
 
-        // Tüm geometrileri getir
         public async Task<List<GeometryEntity>> GetAllAsync()
         {
             return await context.Set<GeometryEntity>()
