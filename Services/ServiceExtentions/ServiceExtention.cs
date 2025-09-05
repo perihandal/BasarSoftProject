@@ -1,5 +1,6 @@
 ﻿using App.Core.Configuration;
 using App.Core.Validators;
+using App.Services.Interfaces;
 using App.Services.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,8 @@ namespace App.Services.ServiceExtentions
             configuration.GetSection("WktValidation").Bind(options));
 
             services.AddScoped<GeometryValidator>();
+            services.AddScoped<IGeometryInfoService,GeometryInfoService>();
+            services.AddScoped<IGeometryMetricsService, GeometryMetricsService>();
             services.AddScoped<IGeometryService, GeometryService>();
             return services;
         }

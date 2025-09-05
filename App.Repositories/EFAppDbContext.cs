@@ -11,6 +11,9 @@ namespace App.Repositories
         { 
         }
         public DbSet<GeometryEntity> Geometries { get; set; } = default!;
+        public DbSet<GeometryInfoEntity> GeometryInfos { get; set; } = default!;
+        public DbSet<GeometryMetricsEntity> GeometryMetrics { get; set; } = default!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

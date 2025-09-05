@@ -72,6 +72,18 @@ namespace App.API.Controllers
 
                 return Ok(response);
             }
+
+        [HttpGet("{pageNumber:int}/{pageSize:int}")]
+        public async Task<IActionResult> GetPagedAll(int pageNumber, int pageSize)
+        {
+            var response = await geometryService.PaginationAsync(pageNumber, pageSize);
+            if (!response.Success)
+                return NotFound(response);
+
+            return Ok(response);
         }
+
+
     }
+}
 

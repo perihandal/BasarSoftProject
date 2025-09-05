@@ -18,5 +18,8 @@ namespace App.Core.Entities
 
         // EF Core Geometry kolon
         public Geometry? Geoloc { get; set; }
+
+        public GeometryInfoEntity GeometryInfo { get; set; }
+        public GeometryMetricsEntity GeometryMetrics { get; set; }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using App.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite;
 using NetTopologySuite.Geometries;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure; 
 
 namespace App.Repositories.Geometries
 {
-    public class GeometryConfiguration : IEntityTypeConfiguration<GeometryEntity>
+    public class GeometryEntityConfiguration : IEntityTypeConfiguration<GeometryEntity>
     {
         public void Configure(EntityTypeBuilder<GeometryEntity> builder)
         {
@@ -15,7 +15,7 @@ namespace App.Repositories.Geometries
             builder.HasKey(g => g.Id);
 
             builder.Property(g => g.Id)
-                   .ValueGeneratedOnAdd(); // Auto increment
+                   .ValueGeneratedOnAdd();
 
             builder.Property(g => g.Name)
                    .IsRequired()
@@ -26,10 +26,18 @@ namespace App.Repositories.Geometries
 
             builder.Property(g => g.Type)
                    .IsRequired();
+            //builder.Property(g => g.Geoloc).HasColumnType("geometry(Geometry,4326").IsRequired();
 
-            //builder.Property(g => g.Geoloc)
-            //       .HasColumnType("geometry")
-            //       .HasSrid(4326); // WGS84         // SRID (WGS84)
+            // Navigasyon propertyleri ile ilişki GeometryInfo ve GeometryMetrics
+            builder.HasOne(g => g.GeometryInfo)
+                   .WithOne(g => g.GeometryEntity)
+                   .HasForeignKey<GeometryInfoEntity>(g => g.GeometryId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(g => g.GeometryMetrics)
+                   .WithOne(g => g.GeometryEntity)
+                   .HasForeignKey<GeometryMetricsEntity>(g => g.GeometryId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

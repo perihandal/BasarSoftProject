@@ -29,6 +29,8 @@ namespace App.Repositories.RepositoryExtentions
                 }));
 
             services.AddScoped<IGeometryRepository, GeometryRepository>();
+            services.AddScoped<IGeometryMetricsRepository, GeometryMetricsRepository>();
+            services.AddScoped<IGeometryInfoRepository, GeometryInfoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 

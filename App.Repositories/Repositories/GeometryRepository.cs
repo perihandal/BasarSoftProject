@@ -11,10 +11,12 @@ namespace App.Repositories.Repositories
 {
     public class GeometryRepository(EFAppDbContext context) : GenericRepository<GeometryEntity>(context), IGeometryRepository
     {
-        
+
         public async Task<GeometryEntity?> GetByIdAsync(int id)
         {
             return await context.Set<GeometryEntity>()
+                //.Include(g => g.GeometryInfo)
+                //.Include(g => g.GeometryMetrics)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(g => g.Id == id);
         }
@@ -22,8 +24,11 @@ namespace App.Repositories.Repositories
         public async Task<List<GeometryEntity>> GetAllAsync()
         {
             return await context.Set<GeometryEntity>()
+                .Include(g => g.GeometryInfo)
+                .Include(g => g.GeometryMetrics)
                 .AsNoTracking()
                 .ToListAsync();
         }
+
     }
 }

@@ -12,5 +12,6 @@ namespace Services.Interfaces
         Task<Response<List<GeometryDto>>> GetAllAsync();
         Task<Response<GeometryDto>> UpdateGeometryAsync(int id, GeometryDto dto);
         Task<Response<bool>> DeleteGeometryAsync(int id);
+        Task<Response<List<GeometryDto>>> PaginationAsync(int page = 1, int pageSize = 10);
     }
 }
