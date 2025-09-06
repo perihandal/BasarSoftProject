@@ -82,6 +82,12 @@ namespace App.API.Controllers
 
             return Ok(response);
         }
+        [HttpGet("count")]
+        public async Task<IActionResult> GetGeometryCount()
+        {
+            var count = await geometryService.GetGeometryCountAsync();
+            return Ok(new { totalCount = count });
+        }
 
 
     }

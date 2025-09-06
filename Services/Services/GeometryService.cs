@@ -77,6 +77,7 @@ namespace App.Services.Services
                 .Include(g => g.GeometryInfo)
                 .Include(g => g.GeometryMetrics);
 
+
             var geometries = await query
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
@@ -224,6 +225,12 @@ namespace App.Services.Services
 
 
             return Response<bool>.Ok(true, ErrorMessages.DeleteSuccess);
+        }
+
+        public async Task<int> GetGeometryCountAsync()
+        {
+            return await repository.GetAll()
+                .CountAsync();
         }
     }
 }
