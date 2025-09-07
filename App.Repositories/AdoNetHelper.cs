@@ -24,7 +24,7 @@ namespace App.Repositories
             }
             catch (Exception ex)
             {
-                // Loglama ekleyebilirsin
+               
                 throw new Exception("ExecuteAsync Hatası: " + ex.Message, ex);
             }
         }
@@ -96,7 +96,7 @@ namespace App.Repositories
         #region PostGIS / WKT Yardımcıları
         public string ConvertWktToSqlGeometry(string wkt, int srid = 4326)
         {
-            // PostGIS SQL: ST_GeomFromText('LINESTRING(0 0,1 1)', 4326)
+            
             return $"ST_GeomFromText('{wkt}', {srid})";
         }
 

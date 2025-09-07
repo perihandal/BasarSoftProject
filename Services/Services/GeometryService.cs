@@ -73,7 +73,7 @@ namespace App.Services.Services
 
         public async Task<Response<List<GeometryDto>>> PaginationAsync(int pageNumber , int pageSize)
         {
-            var query = repository.GetAll() // IQueryable dönen bir repo metodu olmalı
+            var query = repository.GetAll() 
                 .Include(g => g.GeometryInfo)
                 .Include(g => g.GeometryMetrics);
 
@@ -153,7 +153,7 @@ namespace App.Services.Services
                 Wkt = e.Wkt,
                 Type = e.Type.ToString(),
 
-                // GeometryInfo - null kontrolü ile
+                // GeometryInfo
                 FullAddress = e.GeometryInfo?.FullAddress ?? "",
                 Phone = e.GeometryInfo?.Phone ?? "",
                 PhotoBase64 = e.GeometryInfo?.PhotoBase64 ?? "",

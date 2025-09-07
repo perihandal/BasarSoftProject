@@ -16,7 +16,7 @@ namespace App.Core.Entities
         public string Wkt { get; set; } = default!;
         public GeometryType Type { get; set; }
 
-        // EF Core Geometry kolon
+        
         public Geometry? Geoloc { get; set; }
 
         public GeometryInfoEntity GeometryInfo { get; set; }

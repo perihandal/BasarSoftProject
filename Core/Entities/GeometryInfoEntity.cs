@@ -10,13 +10,13 @@ namespace App.Core.Entities
         public string Phone { get; set; }
         public string PhotoBase64 { get; set; }
         public string Description { get; set; }
-        public string OpeningHours { get; set; } // JSON veya string
+        public string OpeningHours { get; set; } 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
 
         public int GeometryId { get; set; } // FK
-        // Navigasyon property
+       
         public GeometryEntity GeometryEntity { get; set; }
     }
 }
